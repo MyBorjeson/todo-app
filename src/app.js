@@ -4,7 +4,7 @@ var TodoApp = React.createClass({
 		return (
 			<div>
 				<ul>
-					<li>Here is my first todo item </li>
+					<Item text="This is My first todo item">
 				</ul>
 			</div>
 			);
