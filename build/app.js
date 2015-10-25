@@ -5,7 +5,7 @@ var TodoApp = React.createClass({
 
 	getInitialState: function getInitialState() {
 		return {
-			items: [{ text: "This is My first todo item", complete: false }, { text: "This is my Second tot item", comeplete: false }]
+			items: [{ text: "Min första todo", complete: false }, { text: "Min andra todo", comeplete: false }]
 		};
 	},
 
@@ -21,6 +21,7 @@ var TodoApp = React.createClass({
 		return React.createElement(
 			"div",
 			null,
+			React.createElement(Form, null),
 			React.createElement(
 				"ul",
 				null,

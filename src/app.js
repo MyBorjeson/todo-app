@@ -3,8 +3,8 @@ var TodoApp = React.createClass({
 	getInitialState: function() {
 		return {
 			items: [
-				{ text: "This is My first todo item", complete: false },
-				{ text: "This is my Second tot item", comeplete: false }
+				{ text: "Min första todo", complete: false },
+				{ text: "Min andra todo", comeplete: false }
 			]
 		};
 	},
@@ -22,6 +22,7 @@ var TodoApp = React.createClass({
   render: function() {
     return (
       <div>
+				<Form />
         <ul>
           {this.state.items.map(this.buildItemNode)}
         </ul>
