@@ -1,5 +1,11 @@
 var Item = React.createClass({
 
+  remove: function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.props.onUpdate({ remove: true});
+  },
+
   toggleComplete: function() {
     if (this.props.complete) {
       this.props.onUpdate({ complete: false });
@@ -7,18 +13,18 @@ var Item = React.createClass({
     } else {
       this.props.onUpdate({ complete:true});
       console.log("Det här är inte gjort! Vi vi borde markera den som ej klar.")
-    }
+    };
   },
 
   render: function() {
     var complete = this.props.complete ? "complete" : "not-complete";
 
-    return (
-      <li onClick={this.toggleComplete} className={complete}>
-        <span className="text">{this.props.text}</span>
-        <a href className="remove" onClick={this.remove}>x</a>
-      </li>
-    );
-  }
+  return (
+    <li onClick={this.toggleComplete} className={complete}>
+      <span className="text">{this.props.text}</span>
+      <a href className="remove" onClick={this.remove}>x</a>
+    </li>
+  );
+}
 
 });

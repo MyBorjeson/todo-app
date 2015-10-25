@@ -3,9 +3,19 @@
 var TodoApp = React.createClass({
 	displayName: "TodoApp",
 
+	getItemsFromLocalStore: function getItemsFromLocalStore() {
+		return JSON.parse(localStorage.items);
+	},
+
 	updateItem: function updateItem(index, action) {
 		var items = this.state.items;
-		items[index].complete = action.complete;
+
+		if (action.remove) {
+			items.splice(index, 1);
+		} else {
+			items[index].complete = action.complete;
+		}
+
 		console.log(items[index]);
 		this.setState({ items: items });
 	},
@@ -17,7 +27,7 @@ var TodoApp = React.createClass({
 
 	getInitialState: function getInitialState() {
 		return {
-			items: [{ text: "Min första todo", complete: true }, { text: "Min andra todo", comeplete: false }]
+			items: [{ text: "Äta", complete: true }, { text: "Koda", complete: false }]
 		};
 	},
 

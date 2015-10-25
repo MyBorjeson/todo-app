@@ -3,6 +3,12 @@
 var Item = React.createClass({
   displayName: "Item",
 
+  remove: function remove(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.props.onUpdate({ remove: true });
+  },
+
   toggleComplete: function toggleComplete() {
     if (this.props.complete) {
       this.props.onUpdate({ complete: false });
@@ -10,7 +16,7 @@ var Item = React.createClass({
     } else {
       this.props.onUpdate({ complete: true });
       console.log("Det här är inte gjort! Vi vi borde markera den som ej klar.");
-    }
+    };
   },
 
   render: function render() {
