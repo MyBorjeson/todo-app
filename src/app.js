@@ -1,7 +1,7 @@
 var TodoApp = React.createClass({
 
 	getInitialState: function() {
-		returns {
+		return {
 			items: [
 				{ text: "This is My first todo item", complete: false },
 				{ text: "This is my Second tot item", comeplete: false }
@@ -10,8 +10,10 @@ var TodoApp = React.createClass({
 	},
 
 	buildItemNode: function(item, index) {
+		console.log(item,index);
 		return (
 			<Item
+				key={index}
 				text={item.text}
 				complete={item.complete} />
 		);
@@ -21,7 +23,7 @@ var TodoApp = React.createClass({
     return (
       <div>
         <ul>
-          {this.state.items.maps(this.buildItemNode)}
+          {this.state.items.map(this.buildItemNode)}
         </ul>
       </div>
     );
