@@ -1,5 +1,16 @@
 var TodoApp = React.createClass({
 
+	updateItem: function(index, action) {
+		var items = this.state.items;
+		items[index].complete = action.complete;
+		this.setState({ items: items });
+	},
+
+	handleNewItem: function(item) {
+		var newItems = this.state.items.concat([item]);
+		this.setState({ items: newItems });
+	},
+
 	getInitialState: function() {
 		return {
 			items: [
@@ -15,18 +26,15 @@ var TodoApp = React.createClass({
 			<Item
 				key={index}
 				text={item.text}
-				complete={item.complete} />
+				complete={item.complete}
+				onUpdate={this.updateItem} />
 		);
-	},
-
-	handleSubmit: function(event) {
-		event.preventDefault();
 	},
 
   render: function() {
     return (
       <div>
-				<Form />
+				<Form onItemAdded={this.handeNewItem} />
         <ul>
           {this.state.items.map(this.buildItemNode)}
         </ul>

@@ -20,7 +20,7 @@ var Form = React.createClass({
     event.preventDefault();
     var textNode = ReactDOM.findDOMNode(this.refs.text);
     console.log(textNode.value);
-    this.props.onItemAdded({ text: textNode.value });
+    //this.props.onItemAdded({ text: textNode.value });
     textNode.value = "";
   }
 
