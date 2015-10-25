@@ -6,6 +6,7 @@ var TodoApp = React.createClass({
 	updateItem: function updateItem(index, action) {
 		var items = this.state.items;
 		items[index].complete = action.complete;
+		console.log(items[index]);
 		this.setState({ items: items });
 	},
 
@@ -16,7 +17,7 @@ var TodoApp = React.createClass({
 
 	getInitialState: function getInitialState() {
 		return {
-			items: [{ text: "Min första todo", complete: false }, { text: "Min andra todo", comeplete: false }]
+			items: [{ text: "Min första todo", complete: true }, { text: "Min andra todo", comeplete: false }]
 		};
 	},
 
@@ -26,14 +27,14 @@ var TodoApp = React.createClass({
 			key: index,
 			text: item.text,
 			complete: item.complete,
-			onUpdate: this.updateItem });
+			onUpdate: this.updateItem.bind(this, index) });
 	},
 
 	render: function render() {
 		return React.createElement(
 			"div",
 			null,
-			React.createElement(Form, { onItemAdded: this.handeNewItem }),
+			React.createElement(Form, { onItemAdded: this.handleNewItem }),
 			React.createElement(
 				"ul",
 				null,

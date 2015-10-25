@@ -19,8 +19,9 @@ var Form = React.createClass({
   handleSubmit: function handleSubmit(event) {
     event.preventDefault();
     var textNode = ReactDOM.findDOMNode(this.refs.text);
-    console.log(textNode.value);
+    console.log(textNode.value.state);
     //this.props.onItemAdded({ text: textNode.value });
+    this.props.onItemAdded({ text: textNode.value });
     textNode.value = "";
   }
 
