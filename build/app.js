@@ -17,6 +17,10 @@ var TodoApp = React.createClass({
 			complete: item.complete });
 	},
 
+	handleSubmit: function handleSubmit(event) {
+		event.preventDefault();
+	},
+
 	render: function render() {
 		return React.createElement(
 			"div",

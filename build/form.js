@@ -6,14 +6,22 @@ var Form = React.createClass({
   render: function render() {
     return React.createElement(
       "form",
-      null,
-      React.createElement("input", null),
+      { onSubmit: this.handleSubmit },
+      React.createElement("input", { ref: "text" }),
       React.createElement(
         "button",
         null,
-        "Lägg till en todo"
+        "Lägg till todo"
       )
     );
+  },
+
+  handleSubmit: function handleSubmit(event) {
+    event.preventDefault();
+    var textNode = ReactDOM.findDOMNode(this.refs.text);
+    console.log(textNode.value);
+    this.props.onItemAdded({ text: textNode.value });
+    textNode.value = "";
   }
 
 });
