@@ -1,10 +1,18 @@
-"use strict";
+'use strict';
 
 var TodoApp = React.createClass({
-	displayName: "TodoApp",
+	displayName: 'TodoApp',
+
+	componentWillUpdate: function componentWillUpdate(nextProps, nextState) {
+		localStorage.items = JSON.stringify(nextState.items);
+	},
 
 	getItemsFromLocalStore: function getItemsFromLocalStore() {
-		return JSON.parse(localStorage.items);
+		if (localStorage.items) {
+			return JSON.parse(localStorage.items);
+		} else {
+			return [];
+		}
 	},
 
 	updateItem: function updateItem(index, action) {
@@ -27,7 +35,7 @@ var TodoApp = React.createClass({
 
 	getInitialState: function getInitialState() {
 		return {
-			items: [{ text: "Äta", complete: true }, { text: "Koda", complete: false }]
+			items: this.getItemsFromLocalStore()
 		};
 	},
 
@@ -42,11 +50,11 @@ var TodoApp = React.createClass({
 
 	render: function render() {
 		return React.createElement(
-			"div",
+			'div',
 			null,
 			React.createElement(Form, { onItemAdded: this.handleNewItem }),
 			React.createElement(
-				"ul",
+				'ul',
 				null,
 				this.state.items.map(this.buildItemNode)
 			)
