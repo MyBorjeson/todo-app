@@ -1,20 +1,16 @@
-'use strict';
+"use strict";
 
 var TodoApp = React.createClass({
-  displayName: 'TodoApp',
+  displayName: "TodoApp",
 
   render: function render() {
     return React.createElement(
-      'div',
+      "div",
       null,
       React.createElement(
-        'ul',
+        "ul",
         null,
-        React.createElement(
-          'li',
-          null,
-          'This is My first todo item!'
-        )
+        React.createElement(Item, { text: "This is My first todo item!" })
       )
     );
   }
